@@ -35,7 +35,7 @@ opt.spelllang = "en,de"
 
 vim.diagnostic.config({
   virtual_text = true,   -- show inline text
-  signs = true,          -- show signs in the gutter
+  signs = false,          -- show signs in the gutter
   underline = true,      -- underline problematic text
   update_in_insert = true, -- update diagnostics in insert mode
 })

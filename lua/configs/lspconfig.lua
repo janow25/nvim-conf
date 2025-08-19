@@ -3,7 +3,6 @@ local util = require "lspconfig.util"
 
 -- List of servers to setup with default options
 local servers = {
-  "lua_ls",
   "marksman",
   "html",
   "cssls",
@@ -21,6 +20,16 @@ local servers = {
 for _, server in ipairs(servers) do
   lspconfig[server].setup {}
 end
+
+require('lspconfig').lua_ls.setup {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' }
+      }
+    }
+  }
+}
 
 -- Rust Analyzer with root_dir and settings
 lspconfig.rust_analyzer.setup {

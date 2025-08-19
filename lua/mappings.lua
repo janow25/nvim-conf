@@ -1,19 +1,15 @@
-local nomap = vim.keymap.del
-
-vim.g.tmux_navigator_no_mappings = 1
-
--- nomap("n", "<C-h>")
--- nomap("n", "<C-j>")
--- nomap("n", "<C-k>")
--- nomap("n", "<C-l>")
-
 local map = vim.keymap.set
 
+vim.g.tmux_navigator_no_mappings = 1
 
 -- Basic Mappings
 map("n", "<leader>q", "<cmd> q <cr>", { desc = "Quit" })
 map("n", "<leader>w", "<cmd> w <cr>", { desc = "Save" })
+map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>", { desc = "Save" })
 map("n", "<leader>W", "<cmd> wq <cr>", { desc = "Save & Quit" })
+
+-- Mappings for Formatting
+map("n", "<leader>fm", "<cmd> lua vim.lsp.buf.format { async = true } <cr>", { desc = "Format" })
 
 -- Mappings for NeoTree
 map("", "<C-b>", "<Cmd>Neotree toggle<CR>", { desc = "Toggle NeoTree", silent = true })
@@ -64,8 +60,6 @@ end, opts)
 
 map("i", "jk", "<ESC>")
 
-map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
-
 -- Move Line Up/Down
 -- Normal mode: Move line up/down
 map("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down" })
@@ -78,33 +72,6 @@ map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
 map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 map("v", "<A-Down>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
 map("v", "<A-Up>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
-
-
--- Terminal toggles using nvterm
-map("n", "<A-h>", function()
-  require("nvterm.terminal").toggle "horizontal"
-end, { desc = "Toggle horizontal terminal" })
-
-map("n", "<A-v>", function()
-  require("nvterm.terminal").toggle "vertical"
-end, { desc = "Toggle vertical terminal" })
-
-map("n", "<A-i>", function()
-  require("nvterm.terminal").toggle "float"
-end, { desc = "Toggle floating terminal" })
-
--- Terminal toggles for MacOS right alt key
-map("n", "ª", function()
-  require("nvterm.terminal").toggle "horizontal"
-end, { desc = "Toggle horizontal terminal" })
-
-map("n", "√", function()
-  require("nvterm.terminal").toggle "vertical"
-end, { desc = "Toggle vertical terminal" })
-
-map("n", "⁄", function()
-  require("nvterm.terminal").toggle "float"
-end, { desc = "Toggle floating terminal" })
 
 local function close_if_float()
   local win = vim.api.nvim_get_current_win()
