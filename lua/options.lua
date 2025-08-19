@@ -1,5 +1,7 @@
 local opt = vim.opt
 
+opt.showmode = false
+
 opt.winborder = "rounded"
 opt.hlsearch = false
 opt.tabstop = 2
