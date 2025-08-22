@@ -18,12 +18,6 @@ return {
 						return vim.o.lines * 0.4
 					end
 				end,
-				-- Added Small delay to actaully work...
-				on_open = function(term)
-					vim.defer_fn(function()
-						vim.cmd("startinsert!")
-					end, 20) -- 20ms delay
-				end
 			}
 			local Terminal = require('toggleterm.terminal').Terminal
 			local lazygit = Terminal:new { cmd = "lazygit", hidden = true, direction = "float", display_name = " LazyGit ", float_opts = {
