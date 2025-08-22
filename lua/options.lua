@@ -2,6 +2,7 @@ local opt = vim.opt
 
 opt.showmode = false
 
+
 opt.winborder = "rounded"
 opt.hlsearch = false
 opt.tabstop = 2
@@ -29,9 +30,8 @@ opt.splitbelow = true -- split horizontal window to the bottom
 -- turn off swapfile
 opt.swapfile = false
 
--- fix No Name buffer
--- by janow
-opt.hidden = false
+-- Enables Buffers to be hidden in memory (rquired by toggleterm)
+opt.hidden = true
 
 opt.spelllang = "en,de"
 

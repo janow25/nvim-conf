@@ -2,8 +2,6 @@ return {
 	{
 		'akinsho/toggleterm.nvim',
 		version = "*",
-		opts = {
-		},
 		keys = {
 			{ "<leader>g", desc = "Toggle Lazygit" },
 			{ "<M-g>",     desc = "Toggle Lazygit" },
@@ -20,24 +18,55 @@ return {
 						return vim.o.lines * 0.4
 					end
 				end,
+				-- Added Small delay to actaully work...
+				on_open = function(term)
+					vim.defer_fn(function()
+						vim.cmd("startinsert!")
+					end, 20) -- 20ms delay
+				end
 			}
 			local Terminal = require('toggleterm.terminal').Terminal
 			local lazygit = Terminal:new { cmd = "lazygit", hidden = true, direction = "float", display_name = " LazyGit ", float_opts = {
 				border = "single",
 			}, }
 
-			function _lazygit_toggle()
+			local function _lazygit_toggle()
 				lazygit:toggle()
 			end
 
+			local vTerm = Terminal:new {
+				cmd = "zsh",
+				direction = "vertical",
+			}
+
+			local function _vterm_toggle()
+				vTerm:toggle()
+			end
+
+			local hTerm = Terminal:new {
+				cmd = "zsh",
+				direction = "horizontal",
+			}
+
+			local function _hterm_toggle()
+				hTerm:toggle()
+			end
+
+			local fTerm = Terminal:new {
+				cmd = "zsh",
+				direction = "float",
+			}
+
+			local function _fterm_toggle()
+				fTerm:toggle()
+			end
+
+			vim.keymap.set("n", "<leader>v", _vterm_toggle, { desc = "Toggle Vertical Terminal" })
+			vim.keymap.set("n", "<leader>h", _hterm_toggle, { desc = "Toggle Horizontal Terminal" })
+
 			vim.keymap.set("n", "<leader>g", _lazygit_toggle, { desc = "Toggle Lazygit" })
 			vim.keymap.set("n", "<M-g>", _lazygit_toggle, { desc = "Toggle Lazygit" })
-			vim.keymap.set("n", "<M-i>", "<cmd>ToggleTerm direction=float name=Shell<CR>",
-				{ desc = "Toggle Floating Terminal" })
-			vim.keymap.set("n", "<leader>h", "<cmd>ToggleTerm direction=horizontal name=hShell<CR>",
-				{ desc = "Toggle Horizontal Terminal" })
-			vim.keymap.set("n", "<leader>v", "<cmd>ToggleTerm direction=vertical name=vShell size=50%<CR>",
-				{ desc = "Toggle Vertical Terminal" })
+			vim.keymap.set("n", "<M-i>", _fterm_toggle, { desc = "Toggle Floating Terminal" })
 		end,
 	},
 }
