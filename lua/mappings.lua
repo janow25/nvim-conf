@@ -8,8 +8,25 @@ map("n", "<leader>w", "<cmd> w <cr>", { desc = "Save" })
 map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>", { desc = "Save" })
 map("n", "<leader>W", "<cmd> wq <cr>", { desc = "Save & Quit" })
 
+-- Mappings for LSP
+map("n", "<leader>lr", "<cmd> lua vim.lsp.buf.rename() <cr>", { desc = "Rename" })
+map("n", "<leader>ld", "<cmd> lua vim.lsp.buf.definition() <cr>", { desc = "Go to Definition" })
+map("n", "<leader>li", "<cmd> lua vim.lsp.buf.implementation() <cr>", { desc = "Go to Implementation" })
+map("n", "<leader>lD", "<cmd> lua vim.lsp.buf.declaration() <cr>", { desc = "Go to Declaration" })
+map("n", "<leader>lT", "<cmd> lua vim.lsp.buf.type_definition() <cr>", { desc = "Go to Type Definition" })
+map("n", "<leader>ls", "<cmd> lua vim.lsp.buf.signature_help() <cr>", { desc = "Signature Help" })
+map("n", "<leader>lS", "<cmd> lua vim.lsp.buf.document_symbol() <cr>", { desc = "Document Symbol" })
+map("n", "<leader>lR", "<cmd> lua vim.lsp.buf.references() <cr>", { desc = "References" })
+map("n", "<leader>lA", "<cmd> lua vim.lsp.buf.code_action() <cr>", { desc = "Code Action" })
+map("n", "<leader>lH", "<cmd> lua vim.lsp.buf.hover() <cr>", { desc = "Hover" })
+map("n", "<leader>lK", "<cmd> lua vim.lsp.buf.signature_help() <cr>", { desc = "Signature Help" })
+
 -- Mappings for Formatting
 map("n", "<leader>fm", "<cmd> lua vim.lsp.buf.format { async = true } <cr>", { desc = "Format" })
+
+-- Mapping for Comment Toggle
+map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
+map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
 
 -- Mappings for NeoTree
 map("", "<C-b>", "<Cmd>Neotree toggle<CR>", { desc = "Toggle NeoTree", silent = true })
@@ -26,7 +43,7 @@ map("n", "<leader>qa", function()
       end
     end
   end
-  vim.cmd("Nvdash")
+  vim.cmd("Alpha")
 end, { desc = "Close all buffers" })
 
 -- Custom key mappings for Tmux navigation
@@ -58,7 +75,6 @@ map({ "n", "t" }, "<C-p>", function()
   vim.cmd("silent! TmuxNavigatePrevious")
 end, opts)
 
-map("i", "jk", "<ESC>")
 
 -- Move Line Up/Down
 -- Normal mode: Move line up/down
@@ -85,8 +101,8 @@ local function close_if_float()
 end
 
 -- Terminal keymaps
+-- Exit Terminal
 map("t", "<Esc>", close_if_float, { desc = "Close floating terminal or exit terminal mode" })
-map("t", "jk", close_if_float, { desc = "Close floating terminal or exit terminal mode" })
 
 -- In terminal-normal mode, <Esc> closes the terminal window
 map("n", "<Esc>", function()
