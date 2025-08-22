@@ -120,33 +120,3 @@ map("n", "<C-c>", function()
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-c>", true, false, true), "n", true)
   end
 end, { desc = "Control + C in terminal" })
-
--- Fix broken <leader>v and <leader>h terminal mappings
-map("n", "<leader>v", function()
-  require("nvterm.terminal").toggle "vertical"
-end, { desc = "Toggle vertical terminal" })
-
-map("n", "<leader>h", function()
-  require("nvterm.terminal").toggle "horizontal"
-end, { desc = "Toggle horizontal terminal" })
-
--- Add Neogit mappings
-map("n", "<leader>gg", function()
-  require("neogit").open {}
-end, { desc = "Open Neogit" })
-
-map("n", "<leader>gc", function()
-  require("neogit").open { "commit" }
-end, { desc = "Open Neogit commit" })
-
-map("n", "<leader>gP", function()
-  require("neogit").open { "push" }
-end, { desc = "Open Neogit push" })
-
-map("n", "<leader>gp", function()
-  require("neogit").open { "pull" }
-end, { desc = "Open Neogit pull" })
-
-map("n", "<leader>gf", function()
-  require("neogit").open { "fetch" }
-end, { desc = "Open Neogit fetch" })
