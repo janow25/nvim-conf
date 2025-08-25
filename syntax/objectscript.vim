@@ -65,9 +65,9 @@ highlight link objectscriptInnerClassName Type
 highlight link objectscriptBrackets Operator
 highlight link objectscriptMethodName Function
 highlight link objectscriptParameter Identifier
-highlight link objectscriptDollarCommands Special
-highlight link objectscriptMacro Special
-highlight link objectscriptMacroWithArgs Special
+highlight link objectscriptDollarCommands Constant
+highlight link objectscriptMacro Constant
+highlight link objectscriptMacroWithArgs Constant
 highlight link objectscriptSystemCall Function
 highlight link objectscriptPropertyWithType Type
 highlight link objectscriptOperator Operator
