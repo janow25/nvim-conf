@@ -29,7 +29,6 @@ return {
 			end
 
 			local vTerm = Terminal:new {
-				cmd = "zsh",
 				direction = "vertical",
 			}
 
@@ -38,7 +37,6 @@ return {
 			end
 
 			local hTerm = Terminal:new {
-				cmd = "zsh",
 				direction = "horizontal",
 			}
 
@@ -47,7 +45,6 @@ return {
 			end
 
 			local fTerm = Terminal:new {
-				cmd = "zsh",
 				direction = "float",
 			}
 
