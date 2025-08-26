@@ -101,18 +101,25 @@ local function close_if_float()
   local buf_type = vim.api.nvim_buf_get_option(buf, "buftype")
 
   -- Check for LazyGit toggleterm
-  if buf_type == "terminal" and buf_name:match("lazygit") then
+  if buf_name:match("lazygit") then
     -- In LazyGit terminal, map back to <ESC>
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
     return
   end
 
-  local win_config = vim.api.nvim_win_get_config(win)
-  if win_config.relative ~= "" then
-    vim.api.nvim_win_close(win, true)
-  else
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true), "n", true)
+  if buf_name:match("toggleterm") then
+    local win_config = vim.api.nvim_win_get_config(win)
+    if win_config.relative then
+      vim.api.nvim_win_close(win, true)
+      return
+    else
+      -- In terminal mode, switch to normal mode
+      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true), "n", true)
+      return
+    end
   end
+
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
 end
 
 -- Terminal keymaps
