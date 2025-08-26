@@ -11,6 +11,7 @@ map("n", "<leader>W", function()
   vim.fn.VSCodeCall("workbench.action.files.saveAll")
   vim.fn.VSCodeCall("workbench.action.closeAllEditors")
 end, { desc = "Save & Quit" })
+map("n", "<A-g>", function() vim.fn.VSCodeCall("lazygit.openLazygit") end, { desc = "Open Lazygit" })
 
 -- LSP Mappings
 map("n", "<leader>lr", function() vim.fn.VSCodeCall("editor.action.rename") end, { desc = "Rename" })
@@ -44,10 +45,8 @@ map("n", "<leader>e", function() vim.fn.VSCodeCall("workbench.view.explorer") en
   { desc = "Focus Explorer", silent = true })
 
 -- Buffer Navigation
-map("n", "<Tab>", function() vim.fn.VSCodeCall("workbench.action.nextEditor") end,
-  { desc = "Next Buffer", silent = true })
-map("n", "<S-Tab>", function() vim.fn.VSCodeCall("workbench.action.previousEditor") end,
-  { desc = "Previous Buffer", silent = true })
+-- map("n", "<Tab>", function() vim.fn.VSCodeCall("workbench.action.nextEditor") end, { desc = "Next Buffer", silent = true })
+-- map("n", "<S-Tab>", function() vim.fn.VSCodeCall("workbench.action.previousEditor") end, { desc = "Previous Buffer", silent = true })
 
 -- Close all buffers & open welcome page
 map("n", "<leader>qa", function()
