@@ -30,6 +30,11 @@ map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
 
 -- Mappings for NeoTree
 map("", "<C-b>", "<Cmd>Neotree toggle<CR>", { desc = "Toggle NeoTree", silent = true })
+map("n", "<leader>e", "<Cmd>Neotree focus<CR>", { desc = "Focus NeoTree", silent = true })
+
+-- Mappings for bufferline
+map("n", "<Tab>", "<Cmd>BufferLineCycleNext<CR>", { desc = "Next Buffer", silent = true })
+map("n", "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Previous Buffer", silent = true })
 
 -- Custom key mappings to close all buffers and open dashboard
 map("n", "<leader>qa", function()
@@ -91,8 +96,18 @@ map("v", "<A-Up>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 
 local function close_if_float()
   local win = vim.api.nvim_get_current_win()
-  local win_config = vim.api.nvim_win_get_config(win)
+  local buf = vim.api.nvim_win_get_buf(win)
+  local buf_name = vim.api.nvim_buf_get_name(buf)
+  local buf_type = vim.api.nvim_buf_get_option(buf, "buftype")
 
+  -- Check for LazyGit toggleterm
+  if buf_type == "terminal" and buf_name:match("lazygit") then
+    -- In LazyGit terminal, map back to <ESC>
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
+    return
+  end
+
+  local win_config = vim.api.nvim_win_get_config(win)
   if win_config.relative ~= "" then
     vim.api.nvim_win_close(win, true)
   else
