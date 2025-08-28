@@ -13,6 +13,9 @@ map("n", "<leader>W", function()
 end, { desc = "Save & Quit" })
 map("n", "<A-g>", function() vim.fn.VSCodeCall("lazygit.openLazygit") end, { desc = "Open Lazygit" })
 
+-- Terminal Mappigns
+map("n", "<leader>h", function() vim.fn.VSCodeCall("terminal.focus") end, { desc = "Focus Terminal" })
+
 -- LSP Mappings
 map("n", "<leader>lr", function() vim.fn.VSCodeCall("editor.action.rename") end, { desc = "Rename" })
 map("n", "<leader>ld", function() vim.fn.VSCodeCall("editor.action.revealDefinition") end, { desc = "Go to Definition" })
