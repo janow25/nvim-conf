@@ -1,7 +1,6 @@
 local opt = vim.opt
 
-opt.showmode = false
-
+opt.showmode = vim.g.vscode ~= nil
 
 opt.winborder = "rounded"
 opt.hlsearch = false
