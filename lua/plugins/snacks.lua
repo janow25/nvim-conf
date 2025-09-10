@@ -3,6 +3,22 @@ return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
+    keys = {
+      { "<C-n>", "<cmd>lua Snacks.explorer()<cr>", desc = "Toggle Explorer" },
+      { "<C-b>", "<cmd>lua Snacks.explorer()<cr>", desc = "Toggle Explorer" },
+      {
+        "<leader>e",
+        function()
+          local snacks = Snacks.picker.get({source = "explorer"})[1]
+          if snacks then
+            snacks.input.win:focus()
+          else
+            Snacks.explorer({ focus = "input" })
+          end
+        end,
+        desc = "Focus Explorer",
+      },
+    },
     ---@type snacks.Config
     opts = {
       -- your configuration comes here

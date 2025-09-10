@@ -28,11 +28,6 @@ map("n", "<leader>fm", "<cmd> lua vim.lsp.buf.format { async = true } <cr>", { d
 map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
 map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
 
--- Mappings for NeoTree
-map("", "<C-b>", "<Cmd>lua Snacks.explorer()<CR>", { desc = "Toggle Explorer", silent = true })
-map("", "<C-n>", "<Cmd>lua Snacks.explorer()<CR>", { desc = "Toggle Explorer", silent = true })
-map("n", "<leader>e", "<Cmd>Neotree focus<CR>", { desc = "Focus NeoTree", silent = true })
-
 -- Mappings for bufferline
 map("n", "<Tab>", "<Cmd>BufferLineCycleNext<CR>", { desc = "Next Buffer", silent = true })
 map("n", "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Previous Buffer", silent = true })
