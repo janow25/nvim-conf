@@ -5,39 +5,15 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- Close Neo-tree on quit
-vim.api.nvim_create_autocmd("QuitPre", {
-  callback = function()
-    -- Try to close Neo-tree if open
-    vim.cmd("Neotree close")
-  end,
-})
-
--- Redraw Alpha dashboard on startup
-vim.api.nvim_create_autocmd("User", {
-  pattern = "LazyVimStarted",
-  callback = function()
-    local stats = require("lazy").stats()
-    local dashboard = require("alpha.themes.dashboard")
-    local version = vim.version()
-    local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-    dashboard.section.footer.val =
-      os.date("  %m-%d-%Y   %H:%M:%S") ..
-      "   Plugins " .. stats.loaded .. "/" .. stats.count ..
-      "   v" .. version.major .. "." .. version.minor .. "." .. version.patch ..
-      "   " .. ms .. "ms"
-    require("alpha").redraw()
-  end,
-})
-
 -- Automatically enter insert mode for ToggleTerm buffers when focusing split
 vim.api.nvim_create_augroup("insertonenter", { clear = true })
 
 local function insert_on_terminal()
-  if vim.bo.buftype == "terminal" then
+  local bufname = vim.api.nvim_buf_get_name(0)
+  if vim.bo.buftype == "terminal" and bufname:match("toggleterm") then
     vim.defer_fn(function()
       vim.cmd("startinsert")
-    end, 20) -- delay in milliseconds
+    end, 20)
   end
 end
 

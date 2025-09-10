@@ -29,7 +29,8 @@ map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
 map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
 
 -- Mappings for NeoTree
-map("", "<C-b>", "<Cmd>Neotree toggle<CR>", { desc = "Toggle NeoTree", silent = true })
+map("", "<C-b>", "<Cmd>lua Snacks.explorer()<CR>", { desc = "Toggle Explorer", silent = true })
+map("", "<C-n>", "<Cmd>lua Snacks.explorer()<CR>", { desc = "Toggle Explorer", silent = true })
 map("n", "<leader>e", "<Cmd>Neotree focus<CR>", { desc = "Focus NeoTree", silent = true })
 
 -- Mappings for bufferline
