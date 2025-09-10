@@ -49,7 +49,7 @@ map("n", "<leader>qa", function()
       end
     end
   end
-  vim.cmd("Alpha")
+  vim.cmd("lua Snacks.dashboard()")
 end, { desc = "Close all buffers" })
 
 -- Custom key mappings for Tmux navigation
