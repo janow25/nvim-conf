@@ -13,6 +13,9 @@ map("n", "<leader>W", function()
 end, { desc = "Save & Quit" })
 map("n", "<A-g>", function() vim.fn.VSCodeCall("lazygit.openLazygit") end, { desc = "Open Lazygit" })
 
+-- Git Branch Selection
+map("n", "<leader>gb", function() vim.fn.VSCodeCall("git.checkout") end, { desc = "Git Branches" })
+
 -- Terminal Mappigns
 map("n", "<leader>h", function() vim.fn.VSCodeCall("terminal.focus") end, { desc = "Focus Terminal" })
 

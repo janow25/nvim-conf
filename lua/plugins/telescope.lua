@@ -13,7 +13,8 @@ return {
 			{ "<leader>fo", "<cmd> Telescope oldfiles <cr>", desc = "Find Old Files" },
 			{ "<leader>fC", "<cmd> Telescope colorscheme <cr>", desc = "Find Colorscheme" },
 			{ "<leader>fM", "<cmd> Telescope marks <cr>", desc = "Find Marks" },
-		},
+      { "<leader>gb", "<cmd> Telescope git_branches <cr>", desc = "Git Branches" },
+    },
 		dependencies = { 'nvim-lua/plenary.nvim' }
 	}
 }
