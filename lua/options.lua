@@ -16,6 +16,7 @@ opt.relativenumber = true
 opt.termguicolors = true
 opt.undofile = true
 opt.signcolumn = "yes"
+opt.virtualedit = { "block","onemore"}
 
 -- search settings
 opt.ignorecase = true -- ignore case when searching
