@@ -1,0 +1,27 @@
+// Place your key bindings in this file to override the defaults
+[
+    // Add mappings for neovim to send key to vim
+    {
+        "key": "space f f",
+        "command": "vscode-neovim.send",
+        "args": " ff",
+        "when": "!editorTextFocus && !terminalFocus && !inputFocus"
+    },
+    {
+        "key": "space f b",
+        "command": "vscode-neovim.send",
+        "args": " fb",
+        "when": "!editorTextFocus && !terminalFocus && !inputFocus"
+    },
+    {
+        "key": "space q a",
+        "command": "vscode-neovim.send",
+        "args": " qa",
+        "when": "!editorTextFocus && !terminalFocus && !inputFocus"
+    },
+    {
+        "key": "alt+g",
+        "command": "lazygit-vscode.toggle",
+        "when": "(!terminalFocus && !inputFocus) || (editorFocus && neovim.mode != insert)"
+    }
+]
