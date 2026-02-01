@@ -6,6 +6,8 @@ return {
     keys = {
       { "<C-n>", "<cmd>lua Snacks.explorer()<cr>", desc = "Toggle Explorer" },
       { "<C-b>", "<cmd>lua Snacks.explorer()<cr>", desc = "Toggle Explorer" },
+      { "<M-g>", "<cmd>lua Snacks.lazygit()<cr>", desc = "Open Lazygit" },
+      { "<leader>g", "<cmd>lua Snacks.lazygit()<cr>", desc = "Open Lazygit" },
       {
         "<leader>e",
         function()

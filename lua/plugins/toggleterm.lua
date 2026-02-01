@@ -3,8 +3,6 @@ return {
 		'akinsho/toggleterm.nvim',
 		version = "*",
 		keys = {
-			{ "<leader>g", desc = "Toggle Lazygit" },
-			{ "<M-g>",     desc = "Toggle Lazygit" },
 			{ "<M-i>",     desc = "Toggle Floating Terminal" },
 			{ "<leader>h", desc = "Toggle Horizontal Terminal" },
 			{ "<leader>v", desc = "Toggle Vertical Terminal" },
@@ -20,13 +18,6 @@ return {
 				end,
 			}
 			local Terminal = require('toggleterm.terminal').Terminal
-			local lazygit = Terminal:new { cmd = "lazygit", hidden = true, direction = "float", display_name = " LazyGit ", float_opts = {
-				border = "single",
-			}, }
-
-			local function _lazygit_toggle()
-				lazygit:toggle()
-			end
 
 			local vTerm = Terminal:new {
 				direction = "vertical",
@@ -55,8 +46,6 @@ return {
 			vim.keymap.set("n", "<leader>v", _vterm_toggle, { desc = "Toggle Vertical Terminal" })
 			vim.keymap.set("n", "<leader>h", _hterm_toggle, { desc = "Toggle Horizontal Terminal" })
 
-			vim.keymap.set("n", "<leader>g", _lazygit_toggle, { desc = "Toggle Lazygit" })
-			vim.keymap.set("n", "<M-g>", _lazygit_toggle, { desc = "Toggle Lazygit" })
 			vim.keymap.set("n", "<M-i>", _fterm_toggle, { desc = "Toggle Floating Terminal" })
 		end,
 	},
